@@ -1,5 +1,6 @@
 <?php
 
+use App\FornecedorModel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -27,6 +28,7 @@ class CreateFornecedorModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fornecedor_models');
+        //metodo dropIfExists faz a verificação se a tabela existe antes de dropa, o (drop) faz a
+        Schema::dropIfExists('fornecedor_models'); 
     }
 }
