@@ -72,3 +72,6 @@ route:: get('/login',function() {return 'login';})->name('site.login');
 
 //passa os parametro p1 e p2 para o controlador que ira somar os dois numeros
     Route::get('/teste/{p1}/{p2}','TesteController@Teste')->name('site.teste');
+  //  Route::get('/pokemons',Function (){
+       // return 'hello';
+   // });

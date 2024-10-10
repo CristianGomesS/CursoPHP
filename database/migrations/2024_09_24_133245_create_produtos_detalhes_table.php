@@ -20,6 +20,7 @@ class CreateProdutosDetalhesTable extends Migration
             $table->float('altura',8,2);
             $table->float('largura',8,2);
             $table->timestamps();
+           
 
             //constraint - relacionamento chave primaria 
             $table->foreign('produto_id')->references('id')->on('produtos');
@@ -39,6 +40,8 @@ class CreateProdutosDetalhesTable extends Migration
             $table->dropForeign('produtos_detalhes_produto_id_foreign');
             $table->dropColumn('produto_id');
         });
+    
         Schema::dropIfExists('produtos_detalhes');
+
     }
 }

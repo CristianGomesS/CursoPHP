@@ -14,10 +14,11 @@ class CreateFornecedorModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fornecedor_models', function (Blueprint $table) {
+        Schema::create('fornecedores', function (Blueprint $table) {
             $table->id();
             $table->string('nome',50);
             $table->timestamps();
+       
         });
     }
 
@@ -29,6 +30,6 @@ class CreateFornecedorModelsTable extends Migration
     public function down()
     {
         //metodo dropIfExists faz a verificação se a tabela existe antes de dropa, o (drop) faz a
-        Schema::dropIfExists('fornecedor_models'); 
+        Schema::dropIfExists('fornecedores'); 
     }
 }

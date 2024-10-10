@@ -13,14 +13,14 @@ class CreateSiteContatoModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('site_contato_models', function (Blueprint $table) {
+        Schema::create('site_contato', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nome',50);
-            $table->string('telefone',20);
-            $table->string('email',80);
-            $table->integer('Motivo_contato');	
-            $table->text('mensagem');	
+            $table->string('nome', 50);
+            $table->string('telefone', 20);
+            $table->string('email', 80);
+            $table->integer('Motivo_contato');
+            $table->text('mensagem');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateSiteContatoModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('site_contato_models');
+        Schema::dropIfExists('site_contato');
     }
 }

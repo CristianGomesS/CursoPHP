@@ -20,6 +20,7 @@ class CreateUnidadesTable extends Migration
             $table->string('sigla',5);
             $table->string('descricao');
             $table->timestamps();
+           
         });
         //constraint com a tabela proutos
         Schema::table('produtos', function(Blueprint $table){ 
@@ -59,5 +60,6 @@ class CreateUnidadesTable extends Migration
               //remover a coluna unidade_id
               $table->dropColumn('unidade_id');
         });
+        Schema::dropIfExists('unidades');
     }
 }
