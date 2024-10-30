@@ -24,13 +24,11 @@ class ServiceFornecedor
     return view('app.fornecedor.adicionar',['msg'=>$msg]);
     }
 
-    public function fornecedorGetAll($request)
+    public function fornecedorGetAll($request, $key)
     {
-        $todosFornecedores = $this->repositoryFornecedor->getAllRep($request);
+        $todosFornecedores = $this->repositoryFornecedor->getAllRep($request, $key);
          $mensagem = empty($todosFornecedores) ? 'Nenhum fornecedor encontrado.' : null;
-        return view('app.fornecedor.listar', ['fornecedorAll' => $todosFornecedores, 'mensagem' => $mensagem]);
-        
-        
+        return view('app.fornecedor.listar', ['fornecedorAll' => $todosFornecedores, 'mensagem' => $mensagem,'old'=>$request->all()]);
        /*  $FornecedoresFiltrados = [];
         // Verifica se algum parâmetro de pesquisa foi passado
         if ($request->nome || $request->site || $request->uf || $request->email) {
@@ -50,22 +48,25 @@ class ServiceFornecedor
         return view('app.fornecedor.listar', ['fornecedorAll' => $FornecedoresFiltrados, 'mensagem' => $mensagem]); */
     }
 
-    public function detailsFornecedor($id)
-    {
+    public function detailsFornecedor($id) {
         $details = $this->repositoryFornecedor->details($id);
+    
+        if (is_null($details)) {
+            return redirect()->route('app.fornecedor.listar',['key'=>'0'])->with('mensagem', 'Fornecedor não encontrado.');
+        }
+    
         return view('app.fornecedor.details', ['details' => $details]);
     }
     public function updateFornecedor($id, $data)
     {
        $this->repositoryFornecedor->update($id, $data);
        
-        return redirect(route('app.fornecedor.listar'));
+        return redirect(route('app.fornecedor.listar',['key'=>'0']));
     }
     public function destroyFornecedor($id)
     {
-       $this->repositoryFornecedor->delete($id);
-       
-        return redirect(route('app.fornecedor.listar'));
+        $this->repositoryFornecedor->delete($id);
+        return redirect()->route('app.fornecedor.listar', ['key' => '0'])->with('mensagem', 'Registro deletado com sucesso');
     }
    
 }

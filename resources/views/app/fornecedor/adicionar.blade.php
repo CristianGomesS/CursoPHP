@@ -9,7 +9,7 @@
         <div class="menu">
                 
                 <ul>
-                        <li><a href="{{route('app.fornecedor.listar')}}">Listar</a></li>
+                        <li><a href="{{route('app.fornecedor.listar',['key'=>'0'])}}">Listar</a></li>
                         <li><a href="{{route('app.fornecedor')}}">Pesquisar</a></li>
                 </ul>
 

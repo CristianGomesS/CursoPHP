@@ -32,8 +32,8 @@ Route::middleware('log.acesso', 'autenticacao:metodo_autenticacao,perfil')->pref
     Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
     //fornecedor - LISTAR
     Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedor');
-    Route::get('/fornecedor/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
-    Route::post('/fornecedor/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
+    Route::get('/fornecedor/listar/{key}', 'FornecedorController@listar')->name('app.fornecedor.listar');
+    Route::post('/fornecedor/listar/{key}', 'FornecedorController@listar')->name('app.fornecedor.listar');
     //DETALHES
     Route::get('/fornecedor/details/{id}', 'FornecedorController@details')->name('app.fornecedor.details');
     Route::put('/fornecedor/details/{id}', 'FornecedorController@update')->name('app.fornecedor.update');
@@ -41,9 +41,10 @@ Route::middleware('log.acesso', 'autenticacao:metodo_autenticacao,perfil')->pref
     Route::get('/fornecedor/adicionar', 'FornecedorController@adicionar')->name('app.fornecedor.adicionar');
     Route::post('/fornecedor/adicionar', 'FornecedorController@store')->name('app.fornecedor.store');
     //delete
-    Route::delete('/fornecedor/lista/{id}', 'FornecedorController@destroy')->name('app.fornecedor.destroy');
+    Route::get('/fornecedor/delete/{key}', 'FornecedorController@listar')->name('app.fornecedor.Destroyer');
+    Route::delete('/fornecedor/delete/{id}', 'FornecedorController@destroy')->name('app.fornecedor.destroy');
 
-    Route::get('/produto', 'ProdrutoController@index')->name('app.produto');
+    Route::resource('produto', 'ProdutoController');
 });
 
 

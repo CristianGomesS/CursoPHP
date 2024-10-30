@@ -10,13 +10,13 @@
                 
                 <ul>
                         <li><a href="{{route('app.fornecedor.adicionar')}}">Novo</a></li>
-                        <li><a href="{{route('app.fornecedor.listar')}}">Listar</a></li>
+                        <li><a href="{{route('app.fornecedor.listar',['key'=>'0'])}}">Listar</a></li>
                 </ul>
 
         </div>
         <div class="informacao-pagina">
                 <div style="width: 30%; margin-left:auto; margin-right: auto ">
-                        <form action="{{route('app.fornecedor.listar')}}" method="POST">
+                        <form action="{{route('app.fornecedor.listar',['key'=>'0'])}}" method="POST">
                                 @csrf
                         <input type="text" name="nome" class="borda-preta" placeholder="Nome">  
                         <input type="text" name="site" class="borda-preta" placeholder="Site">  

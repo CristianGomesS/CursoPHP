@@ -18,9 +18,9 @@ class FornecedorController extends Controller
         return view('app.fornecedor.index');
     }
 
-    public function listar(Request $request)
+    public function listar(Request $request, $key)
     {
-        return $this->serviceFornecedor->fornecedorGetAll($request);
+        return $this->serviceFornecedor->fornecedorGetAll($request, $key);
     }
 
     public function adicionar()
@@ -43,11 +43,17 @@ class FornecedorController extends Controller
     }
 
     public function details($id)
-    {
-        return   $this->serviceFornecedor->detailsFornecedor($id);
+{
+    $listar = $this->serviceFornecedor->detailsFornecedor($id);
+
+    if (!$listar) {
+        return redirect()->back()->with('mensagem', 'Fornecedor não encontrado.');
     }
+    return $listar;
+}
     public function update(Request $request, $id)
     {
+        
         $data = $request->except(['_token', '_method']);
         return $this->serviceFornecedor->updateFornecedor($id, $data);
     }
