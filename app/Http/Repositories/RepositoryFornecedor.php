@@ -28,14 +28,14 @@ class RepositoryFornecedor
             return $this->modelFornecedor->onlyTrashed()->where('nome','like','%'.$request->input('nome').'%')->
         where('site','like','%'.$request->input('site').'%')->
         where('uf','like','%'.$request->input('uf').'%')->
-        where('email','like','%'.$request->input('email').'%')->paginate(2);
+        where('email','like','%'.$request->input('email').'%')->paginate(10);
             break;
         
         default:
         return $this->modelFornecedor->where('nome','like','%'.$request->input('nome').'%')->
         where('site','like','%'.$request->input('site').'%')->
         where('uf','like','%'.$request->input('uf').'%')->
-        where('email','like','%'.$request->input('email').'%')->paginate(2);
+        where('email','like','%'.$request->input('email').'%')->paginate(10);
             break;
       }
      }

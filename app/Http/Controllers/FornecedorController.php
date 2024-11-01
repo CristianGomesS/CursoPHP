@@ -61,4 +61,6 @@ class FornecedorController extends Controller
     {
         return $this->serviceFornecedor->destroyFornecedor($id);
     }
+
+   
 }

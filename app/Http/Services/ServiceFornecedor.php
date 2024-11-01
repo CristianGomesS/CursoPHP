@@ -69,4 +69,5 @@ class ServiceFornecedor
         return redirect()->route('app.fornecedor.listar', ['key' => '0'])->with('mensagem', 'Registro deletado com sucesso');
     }
    
+   
 }

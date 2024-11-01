@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,7 @@ Route::middleware('log.acesso', 'autenticacao:metodo_autenticacao,perfil')->pref
     Route::delete('/fornecedor/delete/{id}', 'FornecedorController@destroy')->name('app.fornecedor.destroy');
 
     Route::resource('produto', 'ProdutoController');
+    Route::resource('produto-detalhe','ProdutoDetalheController');
 });
 
 

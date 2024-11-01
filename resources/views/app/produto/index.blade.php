@@ -4,12 +4,12 @@
 @section('conteudo')
     <div class='conteudo-pagina'>
         <div class='titulo-pagina-2'>
-            <p>Produtos-lista</p>
+            <p>Produtos-index</p>
         </div>
         <div class="menu">
 
             <ul>
-                <li><a href="">Novo</a></li>
+                <li><a href="{{route('produto.create')}}">Novo</a></li>
                 <li><a href="">Pesquisar</a></li>
                 <li><a href="">Registros Deletados</a></li>
 
@@ -25,6 +25,10 @@
                         <th>Nome</th>
                         <th>Peso</th>
                         <th>Descrição</th>
+                        <th>Comprimento</th>
+                        <th>Largura</th>
+                        <th>Altura</th>
+                        <th></th>
                         <th></th>
                         <th></th>
 
@@ -37,17 +41,26 @@
                                     <td>{{ $produto->nome }}</td>
                                     <td>{{ $produto->peso }}</td>
                                     <td>{{ $produto->descricao }}</td>
+                                    <td>{{ $produto->produtoDetalhe->comprimento ?? '' }}</td>
+                                    <td>{{ $produto->produtoDetalhe->largura ?? '' }}</td>
+                                    <td>{{ $produto->produtoDetalhe->altura ?? '' }}</td>
                                     <td>
-                                        <form action="">
-                                            <button type="submit">Atualizar</button>
+                                        <form action="{{route('produto.show',['produto'=>$produto->id])}}">
+                                            <button type="submit"; style="background-color: rgb(43, 102, 31)">Visualizar</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="" method="POST"
+                                        <form action="{{route('produto.edit',['produto'=>$produto->id])}}">
+                                            <button type="submit"; style="background-color: rgb(110, 110, 236)">Editar</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form id="form_{{$produto->id}}" action="{{route('produto.destroy',['produto'=>$produto->id])}}" method="POST"
                                             onsubmit="return confirm('Tem certeza que deseja excluir este registro?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"; style="background-color: red">Excluir</button>
+                                            <button type="submit"; style="background-color: rgb(238, 94, 94)">Excluir</button>
+                                           {{--  <a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit">Excluir</a> --}}
                                         </form>
                                     </td>
 
